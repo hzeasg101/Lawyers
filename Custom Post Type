@@ -1,0 +1,74 @@
+<?php
+
+/*
+	Plugin Name: WPZeas CPT
+	Description: A Lawyers plugin.
+	version: 1.0
+	Author: Henry Zeas
+	Autor URL: https://www.zeasdesign.com
+
+*/
+
+// Register Custom Post Type
+function lawyers() {
+
+	$labels = array(
+		'name'                  => _x( 'lawyers', 'Post Type General Name', 'lawyers' ),
+		'singular_name'         => _x( 'lawyer', 'Post Type Singular Name', 'lawyers' ),
+		'menu_name'             => __( 'lawyers', 'lawyers' ),
+		'name_admin_bar'        => __( 'Lawyers', 'lawyers' ),
+		'archives'              => __( 'Item Archives', 'lawyers' ),
+		'attributes'            => __( 'Item Attributes', 'lawyers' ),
+		'parent_item_colon'     => __( 'Parent Item:', 'lawyers' ),
+		'all_items'             => __( 'All Lawyers', 'lawyers' ),
+		'add_new_item'          => __( 'Add New Lawyers', 'lawyers' ),
+		'add_new'               => __( 'Add New', 'lawyers' ),
+		'new_item'              => __( 'New lawyers', 'lawyers' ),
+		'edit_item'             => __( 'Edit lawyers', 'lawyers' ),
+		'update_item'           => __( 'Update lawyers', 'lawyers' ),
+		'view_item'             => __( 'View lawyers', 'lawyers' ),
+		'view_items'            => __( 'View lawyers', 'lawyers' ),
+		'search_items'          => __( 'Search lawyers', 'lawyers' ),
+		'not_found'             => __( 'Not found', 'lawyers' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'lawyers' ),
+		'featured_image'        => __( 'Featured Image', 'lawyers' ),
+		'set_featured_image'    => __( 'Set featured image', 'lawyers' ),
+		'remove_featured_image' => __( 'Remove featured image', 'lawyers' ),
+		'use_featured_image'    => __( 'Use as featured image', 'lawyers' ),
+		'insert_into_item'      => __( 'Insert into item', 'lawyers' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', 'lawyers' ),
+		'items_list'            => __( 'Items list', 'lawyers' ),
+		'items_list_navigation' => __( 'Items list navigation', 'lawyers' ),
+		'filter_items_list'     => __( 'Filter items list', 'lawyers' ),
+	);
+	$rewrite = array(
+		'slug'                  => 'lawyers',
+		'with_front'            => true,
+		'pages'                 => true,
+		'feeds'                 => true,
+	);
+	$args = array(
+		'label'                 => __( 'lawyer', 'lawyers' ),
+		'description'           => __( 'Lawyers Custom Post Type', 'lawyers' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'comments' ),
+		'taxonomies'            => array( 'category', 'post_tag' ),
+		'hierarchical'          => true,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-admin-users',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'rewrite'               => $rewrite,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'lawyers', $args );
+
+}
+add_action( 'init', 'lawyers', 0 );
